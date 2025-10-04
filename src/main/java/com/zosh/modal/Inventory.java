@@ -27,7 +27,7 @@ public class Inventory {
     private Product product;
 
     @Column(nullable = false)
-    private Integer quantity;
+    private Double quantity;
 
     private LocalDateTime lastUpdated;
 

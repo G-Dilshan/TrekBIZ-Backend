@@ -11,6 +11,6 @@ public class InventoryDTO {
     private Long id;
     private Long branchId;
     private Long productId;
-    private Integer quantity;
+    private Double quantity;
 }
 

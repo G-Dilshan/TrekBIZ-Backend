@@ -65,7 +65,7 @@ public class BranchAnalyticsServiceImpl implements BranchAnalyticsService{
                 .limit(5)
                 .map(obj -> {
                     String name = (String) obj[1];
-                    Long quantity = (Long) obj[2];
+                    Double quantity = (Double) obj[2];
                     double percentage = totalQuantity == 0 ? 0 :
                             ((double) quantity / totalQuantity) * 100;
                     return ProductPerformanceDTO.builder()
@@ -101,7 +101,7 @@ public class BranchAnalyticsServiceImpl implements BranchAnalyticsService{
         return rawData.stream().map(obj -> CategorySalesDTO.builder()
                 .categoryName((String) obj[0])
                 .totalSales((Double) obj[1])
-                .quantitySold((Long) obj[2])
+                .quantitySold((Double) obj[2])
                 .build()
         ).collect(Collectors.toList());
     }

@@ -54,8 +54,8 @@ public class SecurityConfig {
 				cfg.setAllowedOrigins(Arrays.asList(
 						"http://localhost:3000",
 						"http://localhost:5173",      // Frontend calling
-						"https://zosh-pos.vercel.app",
-						"https://pos-sytem-bcs6.vercel.app"
+						"https://trekbiz.netlify.app",
+						"https://trekbiz.vercel.app"
 				));
 				cfg.setAllowedMethods(Collections.singletonList("*"));
 				cfg.setAllowCredentials(true);

@@ -7,6 +7,6 @@ import lombok.Data;
 @Builder
 public class ProductPerformanceDTO {
     private String productName;
-    private Long quantitySold;
+    private Double quantitySold;
     private double percentage; // 0–100
 }

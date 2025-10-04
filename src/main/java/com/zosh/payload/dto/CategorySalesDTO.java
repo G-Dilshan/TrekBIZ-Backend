@@ -14,5 +14,5 @@ import java.math.BigDecimal;
 public class CategorySalesDTO {
     private String categoryName;
     private Double totalSales;
-    private Long quantitySold;
+    private Double quantitySold;
 }
