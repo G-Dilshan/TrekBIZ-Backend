@@ -15,5 +15,8 @@ public interface InventoryService {
     InventoryDTO getInventoryByProductId(Long productId);
     List<InventoryDTO> getInventoryByBranch(Long branchId);
 
+    // NEW METHOD - Add this
+    void reduceInventoryForOrder(Long branchId, Long productId, Double quantity) throws UserException;
+
 }
 

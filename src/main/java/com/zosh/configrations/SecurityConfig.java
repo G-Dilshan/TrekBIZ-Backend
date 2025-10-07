@@ -54,6 +54,7 @@ public class SecurityConfig {
 				cfg.setAllowedOrigins(Arrays.asList(
 						"http://localhost:3000",
 						"http://localhost:5173",      // Frontend calling
+						"http://localhost:5174",
 						"https://trekbiz.netlify.app",
 						"https://trekbiz.vercel.app"
 				));

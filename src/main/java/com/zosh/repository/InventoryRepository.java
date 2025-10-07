@@ -11,6 +11,9 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
     Inventory findByProductId(Long productId);
     List<Inventory> findByBranchId(Long branchId);
 
+    // NEW METHOD - Add this
+    Inventory findByBranchIdAndProductId(Long branchId, Long productId);
+
     @Query("""
         SELECT COUNT(i)
         FROM Inventory i

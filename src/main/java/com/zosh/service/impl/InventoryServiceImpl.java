@@ -13,6 +13,7 @@ import com.zosh.repository.ProductRepository;
 import com.zosh.util.SecurityUtil;
 import com.zosh.service.InventoryService;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -82,6 +83,29 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     public InventoryDTO getInventoryByProductId(Long productId) {
         return InventoryMapper.toDto(inventoryRepository.findByProductId(productId));
+    }
+
+    // NEW METHOD - Add this
+    @Override
+    @Transactional
+    public void reduceInventoryForOrder(Long branchId, Long productId, Double quantity) throws UserException {
+        // Find inventory for the specific branch and product
+        Inventory inventory = inventoryRepository.findByBranchIdAndProductId(branchId, productId);
+
+        if (inventory == null) {
+            throw new UserException("Inventory not found for product ID: " + productId +
+                    " in branch ID: " + branchId);
+        }
+
+        // Check if sufficient quantity is available
+        if (inventory.getQuantity() < quantity) {
+            throw new UserException("Insufficient inventory for product. " +
+                    "Available: " + inventory.getQuantity() + ", Required: " + quantity);
+        }
+
+        // Reduce the quantity
+        inventory.setQuantity(inventory.getQuantity() - quantity);
+        inventoryRepository.save(inventory);
     }
 }
 

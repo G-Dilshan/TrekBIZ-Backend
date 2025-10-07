@@ -17,5 +17,4 @@ public class OrderItemDTO {
         private ProductDTO product;
         private Double price;
 
-
 }
